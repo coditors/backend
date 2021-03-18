@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h2>کار ها</h2>
+    <a class="btn btn-success mt-2" href="{% url 'create.newjob' %}">کار جدید</a>
+      <div class="table-responsive mt-3">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th>عنوان</th>
+              <th>نوع</th>
+              <th>قیمت</th>
+              <th>عکس</th>
+              <th>تاریخ ساخت</th>
+              <th>تاریخ ویرایش</th>
+              <th>عملیات</th>
+            </tr>
+          </thead>
+          <tbody>
+
+          {% for job in jobs %}
+            <tr>
+              <td>{{ job.title }}</td>
+              <td>{{ job.type }}</td>
+              <td>{{ job.price }}</td>
+              <td>
+                  <img src="/{{ job.image }}" width="75" height="75" alt="T_T">
+              </td>
+              <td>{{ job.created_at }}</td>
+              <td>{{ job.updated_at }}</td>
+              <td>
+                  <a class="btn btn-warning" href="{% url 'update.newjob' job.id %}">ویرایش</a>
+                  <a class="btn btn-danger" href="{% url 'delete.newjob' job.id  %}">حذف</a>
+              </td>
+
+            </tr>
+
+          {% endfor %}
+
+          </tbody>
+        </table>
+      </div>
+
+{% endblock %}

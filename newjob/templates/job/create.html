@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>ثبت کار</h1>
+    <form class="form-group" action="{% url 'create.newjob' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="container">
+            <label for="id_title">عنوان:
+                <input class="form-control" type="text" name="title" id="id_title" placeholder="عنوان...">
+            </label>
+            <br>
+            <label for="id_name">نوع:
+                <input class="form-control" type="text" name="type" id="id_name" placeholder="نوع...">
+            </label>
+            <br>
+            <label for="id_describe">رزومه مورد نیاز:
+                <textarea class="form-control" type="text" name="background" id="id_describe" placeholder="رزومه مورد نیاز..."></textarea>
+            </label>
+            <br>
+            <label for="id_price">حقوق:
+                <input class="form-control" type="number" min="0" name="price" id="id_price" placeholder="حقوق...">
+            </label>
+            <br>
+            <label for="id_image">عکس:
+                <input class="form-control" type="file" name="image" id="id_image">
+            </label>
+            <br>
+            <input class="btn btn-success" type="submit" value="ثبت">
+        </div>
+    </form>
+
+{% endblock %}
