@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>ویرایش کار</h1>
+    <form class="form-group" action="{% url 'update.newjob' job.id %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+        <div class="container">
+            <label for="id_title">عنوان:
+                <input class="form-control" type="text" name="title" id="id_title" value="{{ job.title }}">
+            </label>
+            <br>
+            <label for="id_name">نوع:
+                <input class="form-control" type="text" name="type" id="id_name" value="{{ job.type }}">
+            </label>
+            <br>
+            <label for="id_describe">مشخصات:
+                <textarea class="form-control" type="text" name="background" id="id_describe">{{ job.background }}</textarea>
+            </label>
+            <br>
+            <label for="id_price">قیمت:
+                <input class="form-control" type="number" min="0" name="price" id="id_price" value="{{ job.price }}">
+            </label>
+            <br>
+            <label for="id_image">عکس:
+                <input class="form-control" type="file" name="image" id="id_image" value="{{ job.image }}">
+            </label>
+            <br>
+            <input class="btn btn-success" type="submit" value="ثبت">
+        </div>
+    </form>
+
+
+{% endblock %}
